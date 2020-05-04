@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+
+         <ul class="nav nav-pills">
+             <li role="presentation"><a href="{{ url_for('index') }}">Home</a></li>
+             <li role="presentation"><a href="{{ url_for('OilChange') }}">Oil Change</a></li>
+             <li role="presentation"><a href="{{url_for('Schedule')}}">Schedule Appointment</a></li>
+             <li role="presentation"><a href="{{url_for('logout')}}">Logout</a></li>
+            </ul>
+           <!-- <a href="{{ url_for('index') }}">Home</a>-->
+    </div>
+    <h1>Add Vehicle</h1>
+    <form action="" method="post" novalidate>
+        <div class="jumbotron">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.car_vin.label }}<br>
+            {{ form.car_vin(size=32) }}
+            {% for error in form.car_vin.errors %}
+            <span style="color: rebeccapurple;">[{{ error }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.make.label }}<br>
+            {{ form.make(size=32) }}
+            {% for error in form.make.errors %}
+            <span style="color: rebeccapurple;">[{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.model.label }}<br>
+            {{ form.model(size=32) }}
+            {% for error in form.model.errors %}
+            <span style="color: rebeccapurple;">[{{ error }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.color.label }}<br>
+            {{ form.color(size=32) }}
+            {% for error in form.color.errors %}
+            <span style="color: rebeccapurple;">[{{ error }}</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.mileage.label }}<br>
+            {{ form.mileage(size=32) }}
+            {% for error in form.mileage.errors %}
+            <span style="color: rebeccapurple;">[{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+        </div>
+    </form>
+{% endblock %}
